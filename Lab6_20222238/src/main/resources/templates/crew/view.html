@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Detalle Miembro</title></head>
+<body>
+<h1>Detalle del Miembro</h1>
+<p><strong>Nombre:</strong> <span th:text="${crewMember.nombreCompleto}"/></p>
+<p><strong>Especialidad:</strong> <span th:text="${crewMember.especialidad}"/></p>
+<p><strong>Rango:</strong> <span th:text="${crewMember.rango}"/></p>
+<p><strong>Fecha Contratación:</strong> <span th:text="${crewMember.fechaContratacion}"/></p>
+<a href="/crew">Volver</a>
+</body>
+</html>

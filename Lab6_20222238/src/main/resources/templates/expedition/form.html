@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Nueva Expedición</title></head>
+<body>
+<h1 th:text="${expedition.id == null} ? 'Nueva Expedición' : 'Editar Expedición'"></h1>
+<form th:action="@{/expeditions/save}" th:object="${expedition}" method="post">
+  <label>Nombre Misión: <input type="text" th:field="*{nombreMision}"/></label><br>
+  <label>Planeta Destino:
+    <select th:field="*{planetaDestino}">
+      <option th:each="p : ${planets}" th:value="${p.id}" th:text="${p.nombre}"/>
+    </select>
+  </label><br>
+  <label>Fecha Lanzamiento: <input type="datetime-local" th:field="*{fechaLanzamiento}"/></label><br>
+  <label>Objetivos: <textarea th:field="*{objetivos}"></textarea></label><br>
+  <label>Tripulación:</label><br>
+  <div th:each="c : ${crewList}">
+    <input type="checkbox" th:field="*{tripulacion}" th:value="${c.id}"/>
+    <span th:text="${c.nombreCompleto + ' (' + c.especialidad + ')'}"></span><br>
+  </div>
+  <button type="submit">Guardar</button>
+</form>
+<a href="/expeditions">Volver</a>
+</body>
+</html>

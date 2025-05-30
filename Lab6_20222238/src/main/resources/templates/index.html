@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Dashboard</title></head>
 <body>
+<h1>Dashboard de Expediciones</h1>
 
+<a href="/expeditions/new">Nueva Expedición</a>
+<a href="/planets/new">Agregar Planeta</a>
+<a href="/crew/new">Agregar Miembro</a>
+
+<h2>Expediciones</h2>
+<table>
+    <tr><th>Misión</th><th>Planeta</th><th>Fecha</th><th>Estado</th><th>Acciones</th></tr>
+    <tr th:each="exp : ${expeditions}">
+        <td th:text="${exp.nombreMision}"></td>
+        <td th:text="${exp.planetaDestino.nombre}"></td>
+        <td th:text="${#temporals.format(exp.fechaLanzamiento, 'yyyy-MM-dd')}"></td>
+        <td th:text="${exp.estado}"></td>
+        <td>
+            <a th:href="@{'/expeditions/view/' + ${exp.id}}">Ver</a>
+        </td>
+    </tr>
+</table>
+
+<h2>Planetas</h2>
+<table>
+    <tr><th>Nombre</th><th>Tipo</th><th>Habitable</th></tr>
+    <tr th:each="p : ${planets}">
+        <td th:text="${p.nombre}"></td>
+        <td th:text="${p.tipoPlaneta}"></td>
+        <td th:text="${p.habitable} ? 'Sí' : 'No'"></td>
+    </tr>
+</table>
 </body>
 </html>

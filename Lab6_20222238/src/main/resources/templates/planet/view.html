@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Detalle Planeta</title></head>
+<body>
+<h1>Detalle del Planeta</h1>
+<p><strong>Nombre:</strong> <span th:text="${planet.nombre}"/></p>
+<p><strong>Tipo:</strong> <span th:text="${planet.tipoPlaneta}"/></p>
+<p><strong>Habitable:</strong> <span th:text="${planet.habitable} ? 'Sí' : 'No'"/></p>
+<p><strong>Gravedad Relativa:</strong> <span th:text="${planet.gravedadRelativa}"/></p>
+<p><strong>Descripción:</strong> <span th:text="${planet.descripcion}"/></p>
+<a href="/planets">Volver</a>
+</body>
+</html>

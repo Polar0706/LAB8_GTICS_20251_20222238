@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Nuevo Miembro</title></head>
+<body>
+<h1 th:text="${crewMember.id == null} ? 'Nuevo Miembro' : 'Editar Miembro'"></h1>
+<form th:action="@{/crew/save}" th:object="${crewMember}" method="post">
+  <label>Nombre Completo: <input type="text" th:field="*{nombreCompleto}"/></label><br>
+  <label>Especialidad: <input type="text" th:field="*{especialidad}"/></label><br>
+  <label>Rango: <input type="text" th:field="*{rango}"/></label><br>
+  <label>Fecha Contratación: <input type="date" th:field="*{fechaContratacion}"/></label><br>
+  <button type="submit">Guardar</button>
+</form>
+<a href="/crew">Volver</a>
+</body>
+</html>

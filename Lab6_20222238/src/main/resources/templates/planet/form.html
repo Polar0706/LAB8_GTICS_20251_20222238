@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Nuevo Planeta</title></head>
+<body>
+<h1 th:text="${planet.id == null} ? 'Nuevo Planeta' : 'Editar Planeta'"></h1>
+<form th:action="@{/planets/save}" th:object="${planet}" method="post">
+  <label>Nombre: <input type="text" th:field="*{nombre}"/></label><br>
+  <label>Tipo: <input type="text" th:field="*{tipoPlaneta}"/></label><br>
+  <label>Habitable: <input type="checkbox" th:field="*{habitable}"/></label><br>
+  <label>Gravedad Relativa: <input type="number" step="0.01" th:field="*{gravedadRelativa}"/></label><br>
+  <label>Descripción: <textarea th:field="*{descripcion}"></textarea></label><br>
+  <button type="submit">Guardar</button>
+</form>
+<a href="/planets">Volver</a>
+</body>
+</html>
