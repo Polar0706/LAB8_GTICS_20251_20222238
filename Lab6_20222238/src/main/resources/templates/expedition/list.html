@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Expediciones</title></head>
+<body>
+<h1>Expediciones</h1>
+<a href="/expeditions/new">Nueva Expedición</a>
+<table border="1">
+  <tr>
+    <th>Misión</th>
+    <th>Planeta</th>
+    <th>Fecha</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="e : ${expeditions}">
+    <td th:text="${e.nombreMision}"></td>
+    <td th:text="${e.planetaDestino.nombre}"></td>
+    <td th:text="${e.fechaLanzamiento}"></td>
+    <td th:text="${e.estado}"></td>
+    <td>
+      <a th:href="@{'/expeditions/view/' + ${e.id}}">Ver</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

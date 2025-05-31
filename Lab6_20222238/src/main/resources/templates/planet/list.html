@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Planetas</title></head>
+<body>
+<h1>Lista de Planetas</h1>
+<a href="/planets/new">Agregar Planeta</a>
+<table border="1">
+  <tr>
+    <th>Nombre</th>
+    <th>Tipo</th>
+    <th>Habitable</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="p : ${planets}">
+    <td th:text="${p.nombre}"></td>
+    <td th:text="${p.tipoPlaneta}"></td>
+    <td th:text="${p.habitable} ? 'Sí' : 'No'"></td>
+    <td>
+      <a th:href="@{'/planets/view/' + ${p.id}}">Ver</a> |
+      <a th:href="@{'/planets/edit/' + ${p.id}}">Editar</a> |
+      <a th:href="@{'/planets/delete/' + ${p.id}}">Eliminar</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Tripulación</title></head>
+<body>
+<h1>Miembros de la Tripulación</h1>
+<a href="/crew/new">Agregar Miembro</a>
+<table border="1">
+  <tr>
+    <th>Nombre</th>
+    <th>Especialidad</th>
+    <th>Rango</th>
+    <th>Fecha Contratación</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="m : ${crewList}">
+    <td th:text="${m.nombreCompleto}"></td>
+    <td th:text="${m.especialidad}"></td>
+    <td th:text="${m.rango}"></td>
+    <td th:text="${m.fechaContratacion}"></td>
+    <td>
+      <a th:href="@{'/crew/view/' + ${m.id}}">Ver</a> |
+      <a th:href="@{'/crew/edit/' + ${m.id}}">Editar</a> |
+      <a th:href="@{'/crew/delete/' + ${m.id}}">Eliminar</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

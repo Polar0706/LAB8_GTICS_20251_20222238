@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Detalle Expedición</title></head>
+<body>
+<h1>Detalle de Expedición</h1>
+<p><strong>Misión:</strong> <span th:text="${expedition.nombreMision}"/></p>
+<p><strong>Planeta Destino:</strong> <span th:text="${expedition.planetaDestino.nombre}"/></p>
+<p><strong>Fecha Lanzamiento:</strong> <span th:text="${expedition.fechaLanzamiento}"/></p>
+<p><strong>Estado:</strong> <span th:text="${expedition.estado}"/></p>
+<p><strong>Objetivos:</strong> <span th:text="${expedition.objetivos}"/></p>
+<p><strong>Resultados:</strong> <span th:text="${expedition.resultados}"/></p>
+
+<h2>Tripulación</h2>
+<ul>
+  <li th:each="c : ${expedition.tripulacion}" th:text="${c.nombreCompleto + ' - ' + c.especialidad}"></li>
+</ul>
+
+<h3>Cambiar Estado</h3>
+<form th:action="@{'/expeditions/estado/' + ${expedition.id}}" method="post">
+  <select name="nuevoEstado">
+    <option>Planificada</option>
+    <option>En Curso</option>
+    <option>Completada</option>
+    <option>Cancelada</option>
+  </select><br>
+  <label>Resultados (si se completa):</label><br>
+  <textarea name="resultados"></textarea><br>
+  <button type="submit">Actualizar Estado</button>
+</form>
+<a href="/expeditions">Volver</a>
+</body>
+</html>
